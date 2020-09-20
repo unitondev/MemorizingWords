@@ -3,14 +3,16 @@ using MemorizingWords.MemorizingWords.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MemorizingWords.Migrations
 {
     [DbContext(typeof(MemorizingWordsDbContext))]
-    partial class MemorizingWordsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200920231458_ChangedAttributes")]
+    partial class ChangedAttributes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

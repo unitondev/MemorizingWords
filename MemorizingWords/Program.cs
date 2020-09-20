@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using MemorizingWords.MemorizingWords.DAL;
 
 namespace MemorizingWords
 {
@@ -6,7 +8,11 @@ namespace MemorizingWords
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var context = new MemorizingWordsDbContext();
+                
+            var word = context.Words.FirstOrDefault(word1 => word1.Id == 1)?.OriginalWord;
+                Console.WriteLine(word);
+            
         }
     }
 }

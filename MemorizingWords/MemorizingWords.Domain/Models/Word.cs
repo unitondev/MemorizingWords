@@ -7,8 +7,9 @@ namespace MemorizingWords.MemorizingWords.Domain.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        [MaxLength(100)]
         public string OriginalWord { get; set; }
-        [Required]
+        [MaxLength(100)]
         public string Translate { get; set; }
     }
 }
