@@ -17,7 +17,7 @@ namespace MemorizingWords
 
             while (state)
             {
-                int randomId = random.Next(1, GetLastId());
+                int randomId = random.Next(1, GetLastId() + 1);
                 var word = context.Words.FirstOrDefault(word => word.Id == randomId);
                 Console.WriteLine(word.Translate);
                 
