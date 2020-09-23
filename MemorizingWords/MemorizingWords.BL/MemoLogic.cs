@@ -19,28 +19,13 @@ namespace MemorizingWords.MemorizingWords.BL
             _state = true;
             _random = new Random();
             _upperLimit = GetLastIdInDb() + 1;
-
+            
             Console.WriteLine("Do you want to change range of words?\ny - yes, n - no\n");
             var key = Console.ReadKey();
-
+            
             if (key.KeyChar == 'y')
             {
-                Console.WriteLine($"\nEnter lower limit. No more than the upper limit {_upperLimit}");
-                string lowerLimitString = Console.ReadLine();
-
-                if (lowerLimitString == null)
-                {
-                    throw new ArgumentNullException();
-                }
-
-                _lowerLimit = int.Parse(lowerLimitString);
-                
-                if (_lowerLimit >= _upperLimit)
-                {
-                    _lowerLimit = 1;
-                    Console.WriteLine("Lower limit exceeds the upper limit. Lower limit is set by default: 1");
-                }
-                
+                ChangeRange();
             }
 
             Console.WriteLine("\nEnter \"t\" for see translate, \"x\" to exit, any button for continue\n\n");
@@ -100,6 +85,44 @@ namespace MemorizingWords.MemorizingWords.BL
             }
 
             return lastId;
+        }
+
+        public void ChangeRange()
+        {
+            Console.WriteLine($"\nEnter lower limit. No more than the upper limit {_upperLimit}");
+            string lowerLimitString = Console.ReadLine();
+
+            if (lowerLimitString == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            _lowerLimit = int.Parse(lowerLimitString);
+            
+            if (_lowerLimit >= _upperLimit)
+            {
+                _lowerLimit = 1;
+                Console.WriteLine("Lower limit exceeds the upper limit. Lower limit is set by default: 1");
+            }
+            
+            Console.WriteLine($"\nEnter upper limit. No less than the lower limit {_lowerLimit}");
+            string upperLimitString = Console.ReadLine();
+
+            if (upperLimitString == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            int checkUpperLimitInt = int.Parse(upperLimitString);
+
+            if (checkUpperLimitInt <= _lowerLimit)
+            {
+                Console.WriteLine($"The upper limit is less than the lower limit. Upper limit is set to default by {_upperLimit}");
+            }
+            else
+            {
+                _upperLimit = checkUpperLimitInt;
+            }
         }
     }
 }

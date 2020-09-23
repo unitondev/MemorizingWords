@@ -12,5 +12,6 @@ namespace MemorizingWords.MemorizingWords.BL.Interfaces
         public Word ConsoleOutput(MemorizingWordsDbContext dbContext);
         public void ConsoleInput(Word word);
         public int GetLastIdInDb();
+        public void ChangeRange();
     }
 }
