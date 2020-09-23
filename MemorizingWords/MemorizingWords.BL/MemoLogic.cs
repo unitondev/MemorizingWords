@@ -92,9 +92,9 @@ namespace MemorizingWords.MemorizingWords.BL
             Console.WriteLine($"\nEnter lower limit. No more than the upper limit {_upperLimit}");
             string lowerLimitString = Console.ReadLine();
 
-            if (lowerLimitString == null)
+            if (string.IsNullOrEmpty(lowerLimitString))
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(nameof(lowerLimitString), "You need to enter lower limit");
             }
 
             _lowerLimit = int.Parse(lowerLimitString);
@@ -108,9 +108,9 @@ namespace MemorizingWords.MemorizingWords.BL
             Console.WriteLine($"\nEnter upper limit. No less than the lower limit {_lowerLimit}");
             string upperLimitString = Console.ReadLine();
 
-            if (upperLimitString == null)
+            if (string.IsNullOrEmpty(upperLimitString))
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(nameof(upperLimitString), "You need to enter upper limit");
             }
 
             int checkUpperLimitInt = int.Parse(upperLimitString);
