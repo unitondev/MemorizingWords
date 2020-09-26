@@ -94,7 +94,7 @@ namespace MemorizingWords.MemorizingWords.BL
 
             if (string.IsNullOrEmpty(lowerLimitString))
             {
-                throw new ArgumentNullException(nameof(lowerLimitString), "You need to enter lower limit");
+                throw new ArgumentNullException(nameof(lowerLimitString), "You need to enter lower limit no more than the upper limit");
             }
 
             _lowerLimit = int.Parse(lowerLimitString);
@@ -110,7 +110,7 @@ namespace MemorizingWords.MemorizingWords.BL
 
             if (string.IsNullOrEmpty(upperLimitString))
             {
-                throw new ArgumentNullException(nameof(upperLimitString), "You need to enter upper limit");
+                throw new ArgumentNullException(nameof(upperLimitString), "You need to enter upper limit no less than the lower limit");
             }
 
             int checkUpperLimitInt = int.Parse(upperLimitString);
