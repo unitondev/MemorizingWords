@@ -139,8 +139,8 @@ namespace MemorizingWords.MemorizingWords.BL
 
         public void AddWords()
         {
-            IParserFromStringToDb parser = new ParserFromStringToDb();
-            parser.ParseFromStringToDb();
+            IParserFromFileToDbContent parser = new ParserFromFileToDbContent();
+            parser.ParseFromFileToDbContent();
             _upperLimit = GetLastIdInDb() + 1;
         }
     }

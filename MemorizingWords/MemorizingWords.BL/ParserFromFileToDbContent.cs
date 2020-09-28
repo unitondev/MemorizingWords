@@ -8,16 +8,16 @@ using Microsoft.Data.SqlClient;
 
 namespace MemorizingWords.MemorizingWords.BL
 {
-    public class ParserFromStringToDb : IParserFromStringToDb
+    public class ParserFromFileToDbContent : IParserFromFileToDbContent
     {
         private List<WordFromFile> _arrayOfPairsFromFile;
 
-        public ParserFromStringToDb()
+        public ParserFromFileToDbContent()
         {
             _arrayOfPairsFromFile = new List<WordFromFile>();
         }
         
-        public void ParseFromStringToDb()
+        public void ParseFromFileToDbContent()
         {
             //TODO add return List<T>, dont initialize _arrayFrom..., just return from this method  
             RecordWordsFromFileToList();

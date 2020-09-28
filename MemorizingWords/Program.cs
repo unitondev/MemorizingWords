@@ -11,11 +11,8 @@ namespace MemorizingWords
         static void Main(string[] args)
         {
             IMemoLogic repository = new MemoLogic();
-            IParserFromStringToDb parser = new ParserFromStringToDb();
             MemorizingWordsDbContext context = new MemorizingWordsDbContext();
             
-            //parser.ParseFromStringToDb();
-  
             repository.Initialize();
             
              while (repository.CheckState())
