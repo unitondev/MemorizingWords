@@ -11,23 +11,35 @@ namespace MemorizingWords.MemorizingWords.BL
     {
         private bool _state;
         private Random _random;
-        private int _lowerLimit = 1;
+        private int _lowerLimit;
         private int _upperLimit;
 
+        public MemoLogic()
+        {
+            _lowerLimit = 1;
+            _upperLimit = GetLastIdInDb() + 1;
+            _random = new Random();
+            _state = true;
+        }
+       
         public void Initialize()
         {
-            _state = true;
-            _random = new Random();
-            _upperLimit = GetLastIdInDb() + 1;
-            
-            Console.WriteLine("Do you want to change range of words?\ny - yes, n - no\n");
+            Console.WriteLine("Do you want to add any words?\ny - yes, n - no\n");
             var key = Console.ReadKey();
+            
+            if (key.KeyChar == 'y')
+            {
+                AddWords();
+            }
+            
+            Console.WriteLine("\nDo you want to change range of words?\ny - yes, n - no\n");
+            key = Console.ReadKey();
             
             if (key.KeyChar == 'y')
             {
                 ChangeRange();
             }
-
+            
             Console.WriteLine("\nEnter \"t\" for see translate, \"x\" to exit, any button for continue\n\n");
         }
 
@@ -92,9 +104,9 @@ namespace MemorizingWords.MemorizingWords.BL
             Console.WriteLine($"\nEnter lower limit. No more than the upper limit {_upperLimit}");
             string lowerLimitString = Console.ReadLine();
 
-            if (lowerLimitString == null)
+            if (string.IsNullOrEmpty(lowerLimitString))
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(nameof(lowerLimitString), "You need to enter lower limit no more than the upper limit");
             }
 
             _lowerLimit = int.Parse(lowerLimitString);
@@ -108,9 +120,9 @@ namespace MemorizingWords.MemorizingWords.BL
             Console.WriteLine($"\nEnter upper limit. No less than the lower limit {_lowerLimit}");
             string upperLimitString = Console.ReadLine();
 
-            if (upperLimitString == null)
+            if (string.IsNullOrEmpty(upperLimitString))
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(nameof(upperLimitString), "You need to enter upper limit no less than the lower limit");
             }
 
             int checkUpperLimitInt = int.Parse(upperLimitString);
@@ -123,6 +135,13 @@ namespace MemorizingWords.MemorizingWords.BL
             {
                 _upperLimit = checkUpperLimitInt;
             }
+        }
+
+        public void AddWords()
+        {
+            IParserFromFileToDbContent parser = new ParserFromFileToDbContent();
+            parser.ParseFromFileToDbContent();
+            _upperLimit = GetLastIdInDb() + 1;
         }
     }
 }
