@@ -24,14 +24,22 @@ namespace MemorizingWords.MemorizingWords.BL
        
         public void Initialize()
         {
-            Console.WriteLine("Do you want to change range of words?\ny - yes, n - no\n");
+            Console.WriteLine("Do you want to add any words?\ny - yes, n - no\n");
             var key = Console.ReadKey();
+            
+            if (key.KeyChar == 'y')
+            {
+                AddWords();
+            }
+            
+            Console.WriteLine("\nDo you want to change range of words?\ny - yes, n - no\n");
+            key = Console.ReadKey();
             
             if (key.KeyChar == 'y')
             {
                 ChangeRange();
             }
-
+            
             Console.WriteLine("\nEnter \"t\" for see translate, \"x\" to exit, any button for continue\n\n");
         }
 
@@ -127,6 +135,13 @@ namespace MemorizingWords.MemorizingWords.BL
             {
                 _upperLimit = checkUpperLimitInt;
             }
+        }
+
+        public void AddWords()
+        {
+            IParserFromStringToDb parser = new ParserFromStringToDb();
+            parser.ParseFromStringToDb();
+            _upperLimit = GetLastIdInDb() + 1;
         }
     }
 }

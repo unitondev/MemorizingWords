@@ -13,5 +13,6 @@ namespace MemorizingWords.MemorizingWords.BL.Interfaces
         public void ConsoleInput(Word word);
         public int GetLastIdInDb();
         public void ChangeRange();
+        public void AddWords();
     }
 }

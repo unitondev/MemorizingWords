@@ -10,7 +10,12 @@ namespace MemorizingWords.MemorizingWords.BL
 {
     public class ParserFromStringToDb : IParserFromStringToDb
     {
-        private List<WordFromFile> _arrayOfPairsFromFile = new List<WordFromFile>();
+        private List<WordFromFile> _arrayOfPairsFromFile;
+
+        public ParserFromStringToDb()
+        {
+            _arrayOfPairsFromFile = new List<WordFromFile>();
+        }
         
         public void ParseFromStringToDb()
         {
