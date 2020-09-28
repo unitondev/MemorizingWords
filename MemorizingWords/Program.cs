@@ -10,7 +10,7 @@ namespace MemorizingWords
     {
         static void Main(string[] args)
         {
-            MemoLogic repository = new MemoLogic();
+            IMemoLogic repository = new MemoLogic();
             IParserFromStringToDb parser = new ParserFromStringToDb();
             MemorizingWordsDbContext context = new MemorizingWordsDbContext();
             

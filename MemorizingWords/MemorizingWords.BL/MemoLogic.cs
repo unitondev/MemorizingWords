@@ -11,15 +11,19 @@ namespace MemorizingWords.MemorizingWords.BL
     {
         private bool _state;
         private Random _random;
-        private int _lowerLimit = 1;
+        private int _lowerLimit;
         private int _upperLimit;
 
+        public MemoLogic()
+        {
+            _lowerLimit = 1;
+            _upperLimit = GetLastIdInDb() + 1;
+            _random = new Random();
+            _state = true;
+        }
+       
         public void Initialize()
         {
-            _state = true;
-            _random = new Random();
-            _upperLimit = GetLastIdInDb() + 1;
-            
             Console.WriteLine("Do you want to change range of words?\ny - yes, n - no\n");
             var key = Console.ReadKey();
             
