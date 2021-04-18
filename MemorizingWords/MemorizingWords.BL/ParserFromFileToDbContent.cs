@@ -63,7 +63,7 @@ namespace MemorizingWords.MemorizingWords.BL
         
         private void RecordWordsFromFileToList()
         {
-            string path = @"C:\Users\artyom\Desktop\words.txt";
+            string path = @"C:\Users\uniton\Desktop\words.txt";
 
             try
             {
